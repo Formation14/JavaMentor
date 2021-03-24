@@ -45,22 +45,10 @@ public class Expression {
     }
 
     private void checkExpression() {
-        System.out.println(arabicFigures.getFigures().get(a));
-        System.out.println(arabicFigures.getFigures().get(b));
         try {
             if ((romanFigures.getFigures().containsKey(a) && arabicFigures.getFigures().containsKey(b)) ||
                     (arabicFigures.getFigures().containsKey(a) && romanFigures.getFigures().containsKey(b))) {
                 throw new ConditionException("В выражении разные системы исчисления, смотри условие задачи");
-            }
-            if ((!arabicFigures.getFigures().containsKey(a) && arabicFigures.getFigures().get(a) > 10) ||
-                    (!arabicFigures.getFigures().containsKey(a) && arabicFigures.getFigures().get(a) < 1) ||
-                    (!arabicFigures.getFigures().containsKey(b) && arabicFigures.getFigures().get(b) > 10) ||
-                    (!arabicFigures.getFigures().containsKey(b) && arabicFigures.getFigures().get(b) < 1) ||
-                    (romanFigures.getFigures().containsKey(a) && romanFigures.getFigures().get(a) > 10) ||
-                    (romanFigures.getFigures().containsKey(a) && romanFigures.getFigures().get(a) < 1) ||
-                    (romanFigures.getFigures().containsKey(b) && romanFigures.getFigures().get(b) > 10) ||
-                    (romanFigures.getFigures().containsKey(b) && romanFigures.getFigures().get(b) < 1)) {
-                throw new ConditionException("Выражение не удовлетворяет условию");
             }
         } catch (ConditionException e) {
             e.printStackTrace();

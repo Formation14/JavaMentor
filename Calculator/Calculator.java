@@ -5,7 +5,7 @@ import java.util.Map;
 public class Calculator {
 
     private Expression expression;
-    private double result;
+    private int result;
     private int a;
     private int b;
     private String variable;
@@ -20,13 +20,24 @@ public class Calculator {
        this.b = variableSecond();
        this.variable = expression.getOperation();
        this.result=  math();
+       checkVariables();
     }
 
-    private double math() {
-        double result=0;
+    private void checkVariables() {
+        if (this.a <= 0 || this.a > 10 || this.b <= 0 || this.b > 10){
+            try {
+                throw new ConditionException("Выражение не удовлетворяет условию");
+            } catch (ConditionException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private int math() {
+        int result=0;
         switch (this.variable){
             case "/":
-               result= (double) a / b;
+               result=  a / b;
                 break;
             case "*":
                 result = a * b;
@@ -81,7 +92,7 @@ public class Calculator {
         if (roman.getFigures().containsKey(expression.getA())){
             System.out.printf("%s %s %s = %s",roman.getResult().get(a),variable,roman.getResult().get(b),roman.getResult().get((int)result));
         }else
-            System.out.printf("%d %s %d = %.0f",a,variable,b,result);
+            System.out.printf("%d %s %d = %d",a,variable,b,result);
     }
 
 }
